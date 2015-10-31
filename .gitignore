@@ -1,0 +1,28 @@
+node_modules/
+bower_components/
+coverage/
+.sass-cache/
+.idea/
+.tmp/
+dist/
+### https://raw.github.com/github/gitignore/cdfa89334df7e99dcf85ad8ecade7e14f498612f/Global/Vim.gitignore
+
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+
+### https://raw.github.com/github/gitignore/cdfa89334df7e99dcf85ad8ecade7e14f498612f/Global/Linux.gitignore
+
+*~
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+
