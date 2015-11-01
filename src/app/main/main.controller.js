@@ -1,32 +1,37 @@
 export class MainController {
-  constructor ($timeout, webDevTec, toastr) {
+  constructor () {
     'ngInject';
 
-    this.awesomeThings = [];
-    this.classAnimation = '';
-    this.creationDate = 1446293997434;
-    this.toastr = toastr;
+    this.globalSettings = {
+      modes: {
+        single: 'Single-threaded (local)',
+        multi: 'Multi-threaded (local)',
+        cluster: 'Cluster'
+      },
+      inputs: {
+        center: {min: 5000, max: 100000},
+        range: {min: 1000, max: 5000}
+      }
+    };
 
-    this.activate($timeout, webDevTec);
+    this.jobSettings = {
+      executionMode: 'single',
+      center: 10000,
+      range: 2000
+    };
+
+    this.currentJob = {
+      running: false
+    };
+
+    this.jobHistory = [];
   }
 
-  activate($timeout, webDevTec) {
-    this.getWebDevTec(webDevTec);
-    $timeout(() => {
-      this.classAnimation = 'rubberBand';
-    }, 4000);
-  }
-
-  getWebDevTec(webDevTec) {
-    this.awesomeThings = webDevTec.getTec();
-
-    angular.forEach(this.awesomeThings, (awesomeThing) => {
-      awesomeThing.rank = Math.random();
+  run () {
+    //run here
+    this.jobHistory.splice(0, 0, {
+      settings: _.cloneDeep(this.jobSettings),
+      runtime: undefined //TODO
     });
-  }
-
-  showToastr() {
-    this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-    this.classAnimation = '';
   }
 }
