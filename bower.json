@@ -17,7 +17,9 @@
     "moment": "~2.10.6",
     "animate.css": "~3.4.0",
     "angular": "~1.4.2",
-    "lodash": "~3.10.1"
+    "lodash": "~3.10.1",
+    "multithread.js": "keithwhor/multithread.js",
+    "jsCluster-client": "../jsCluster-client/dist/jsCluster.js"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"
@@ -31,6 +33,11 @@
         "assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+      ]
+    },
+    "multithread.js": {
+      "main": [
+        "multithread.js"
       ]
     }
   },

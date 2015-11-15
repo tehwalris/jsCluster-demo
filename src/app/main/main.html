@@ -55,11 +55,13 @@
   <div class="panel panel-default history" ng-show="main.jobHistory.length">
     <div class="panel-heading">History</div>
     <table class="table">
-      <tr><th>Mode</th><th>Center</th><th>Range</th></tr>
+      <tr><th>Mode</th><th>Center</th><th>Range</th><th>Primes found</th><th>Runtime (ms)</th></tr>
       <tr ng-repeat="job in main.jobHistory">
         <td>{{main.globalSettings.modes[job.settings.executionMode]}}</td>
         <td>{{job.settings.center}}</td>
         <td>{{job.settings.range}}</td>
+        <td>{{job.result.length}}</td>
+        <td>{{job.runtime}}</td>
       </tr>
     </table>
   </div>
