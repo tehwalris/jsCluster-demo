@@ -12,9 +12,11 @@ export class MonitoringController {
     this.monitoring.on('log', (type, message, data) => {
       this.$scope.$apply(() => this._log(type, message, data));
     });
+    this.startupTime = Date.now();
   }
 
   saveLogLocally () {
+    this.startupTime = Date.now();
     var testTag = prompt("Enter a test tag");
     this.FileSaver.saveAs(
       new Blob([angular.toJson({
