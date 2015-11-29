@@ -1,0 +1,4 @@
+<div class="packet" ng-repeat="packet in vm.packets" ng-class="packet.direction" style="transform: translate({{packet.position.x}}, {{packet.position.y}});">{{packet.count}}</div>
+<div class="client" ng-repeat="client in vm.clientArray" style="transform: rotate({{45+$index*360/vm.clientArray.length}}deg);">&nbsp;</div>
+<div class="coordinator">&nbsp;</div>
+

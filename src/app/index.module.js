@@ -11,6 +11,7 @@ import { GithubContributorService } from '../app/components/githubContributor/gi
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
+import { ClusterMapDirective } from '../app/components/clusterMap/clusterMap.directive';
 
 angular.module('jsClusterDemo', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr'])
   .constant('malarkey', malarkey)
@@ -27,5 +28,6 @@ angular.module('jsClusterDemo', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitiz
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
   .controller('MonitoringController', MonitoringController)
+  .directive('clusterMap', ClusterMapDirective)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);
