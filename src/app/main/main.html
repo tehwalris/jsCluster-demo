@@ -48,7 +48,9 @@
   <div class="row">
     <div class="col-xs-12 text-center">
       <button type="button" class="btn btn-primary btn-lg" ng-click="main.run()" ng-hide="main.currentJob.running" ng-disabled="!jobInputs.$valid">Start</button>
+      <button type="button" class="btn btn-lg" ng-click="main.run(100)" ng-hide="main.currentJob.running" ng-disabled="!jobInputs.$valid">Start 100x</button>
       <button type="button" class="btn btn-danger btn-lg" ng-show="main.currentJob.running">Cancel</button>
+      <button type="button" class="btn btn-lg" ng-click="main.saveLogLocally()" ng-hide="main.currentJob.running">Save log</button>
     </div>
   </div>
 

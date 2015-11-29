@@ -19,7 +19,8 @@
     "angular": "~1.4.2",
     "lodash": "~3.10.1",
     "multithread.js": "keithwhor/multithread.js",
-    "jsCluster-client": "../jsCluster-client/dist/jsCluster.js"
+    "jsCluster-client": "../jsCluster-client/dist/jsCluster.js",
+    "angular-file-saver": "~1.0.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"

@@ -1,9 +1,10 @@
 export class MainController {
-  constructor ($log, _, primeFinder) {
+  constructor ($log, _, primeFinder, FileSaver) {
     'ngInject';
     this.$log = $log;
     this._ = _;
     this.primeFinder = primeFinder;
+    this.FileSaver = FileSaver;
 
     this.globalSettings = {
       modes: {
@@ -16,33 +17,51 @@ export class MainController {
         range: {min: 1000, max: 10000}
       }
     };
-
     this.jobSettings = {
       executionMode: 'single',
       center: 10000,
       range: 2000
     };
-
     this.currentJob = {
       running: false
     };
-
     this.jobHistory = [];
+    this.startupTime = Date.now();
   }
 
-  run () {
+  run (n) {
     this.currentJob.running = true;
     var settings = this._.cloneDeep(this.jobSettings);
-    var start = (new Date()).getTime();
+    var start = performance.now();
     this.primeFinder.run(settings)
     .then((result) => {
       this.jobHistory.splice(0, 0, {
         result: result,
         settings: settings,
-        runtime: (new Date()).getTime() - start
+        runtime: performance.now() - start
       });
+      if(n > 0)
+        this.run(n-1);
     })
     .catch((e) => {this.$log.error(e);})
-    .finally(() => {this.currentJob.running = false;});
+    .finally(() => {if(!n) this.currentJob.running = false;});
+  }
+
+  saveLogLocally () {
+    var testTag = prompt("Enter a test tag");
+    var data = this._.map(this.jobHistory, (job) => this._.omit(job, 'result'));
+    this.FileSaver.saveAs(
+      new Blob([angular.toJson({
+        metadata: {
+          source: 'client',
+          startupTime: this.startupTime,
+          writeTime: Date.now(),
+          clientUUID: this.primeFinder.cluster.uuid,
+          testTag: testTag
+        },
+        data: data
+      }, 2)]),
+      'jsCluster-client-log[tag_' + testTag + '][started_' + this.startupTime + '].jclog'
+    );
   }
 }

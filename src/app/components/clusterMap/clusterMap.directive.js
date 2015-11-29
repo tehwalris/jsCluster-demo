@@ -7,16 +7,12 @@ export function ClusterMapDirective () {
       clients: '='
     },
     templateUrl: 'app/components/clusterMap/clusterMap.html',
-    link: linkFunc,
     controller: ClusterMapController,
     controllerAs: 'vm',
     bindToController: true
   };
 
   return directive;
-
-  function linkFunc(scope, el, attr, vm) {
-  }
 }
 
 class ClusterMapController {
@@ -45,7 +41,7 @@ class ClusterMapController {
       if(settings.direction)
         group.packetsByStage[settings.stage].push(settings);
       var shouldDelete = false;
-      _.forEach(group.packetsByStage[group.stage], (packet) => {
+      this._.forEach(group.packetsByStage[group.stage], (packet) => {
         packet.position = this.clients[packet.clientUUID].position;
         this.packets.push(packet);
         this.$timeout(() => {this.packets.splice(0, 1);}, 300); //HACK fixed time

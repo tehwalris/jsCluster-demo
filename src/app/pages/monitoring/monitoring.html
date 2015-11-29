@@ -7,7 +7,13 @@
 
   <cluster-map clients="vm.clients"></cluster-map>
 
-  <div class="panel panel-default">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <button type="button" class="btn btn-lg" ng-click="vm.saveLogLocally()">Save log</button>
+    </div>
+  </div>
+
+  <div class="panel panel-default history">
     <div class="panel-heading">Logs</div>
     <table class="table">
       <tr><th>Time</th><th>Type</th><th>Message</th><th>Data</th></tr>

@@ -13,7 +13,7 @@ import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 import { ClusterMapDirective } from '../app/components/clusterMap/clusterMap.directive';
 
-angular.module('jsClusterDemo', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr'])
+angular.module('jsClusterDemo', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr', 'ngFileSaver'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .constant('_', _)
