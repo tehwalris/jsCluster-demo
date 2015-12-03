@@ -4,7 +4,7 @@ export class PrimeFinderService {
     this.$log = $log;
     this.$q = $q;
     this.multithread = new Multithread(4); //TODO thread count detection
-    this.cluster = jsCluster.connect(':3210', {reconnection: false});
+    this.cluster = jsCluster.connect(':3210', {reconnection: false, transports: ['websocket']});
 
     this.isPrime = function (n) {
       if(n < 3)
