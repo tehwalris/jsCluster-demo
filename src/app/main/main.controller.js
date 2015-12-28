@@ -29,8 +29,14 @@ export class MainController {
     this.startupTime = Date.now();
   }
 
-  run (n) {
+  run (n, sweep, sweepN) {
     this.currentJob.running = true;
+    if(sweep) {
+      sweepN = sweepN || n;
+      var sweepProgress = (sweepN - n)/sweepN;
+      var centerRangesLog = this._.mapValues(this.globalSettings.inputs.center, (value) => Math.log10(value));
+      this.jobSettings.center = Math.floor(Math.pow(10, ((1 - sweepProgress) * centerRangesLog.min + sweepProgress * centerRangesLog.max)));
+    }
     var settings = this._.cloneDeep(this.jobSettings);
     var start = performance.now();
     this.primeFinder.run(settings)
@@ -40,8 +46,10 @@ export class MainController {
         settings: settings,
         runtime: performance.now() - start
       });
-      if(n > 0)
-        this.run(n-1);
+      if(n > 0) {
+        this.run(n-1, sweep, sweepN);
+        this.jobSettings.center = this.globalSettings.inputs.center.min;
+      }
     })
     .catch((e) => {this.$log.error(e);})
     .finally(() => {if(!n) this.currentJob.running = false;});
